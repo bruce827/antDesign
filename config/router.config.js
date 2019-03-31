@@ -1,12 +1,37 @@
+/** 
+ * 路由
+* name 和 icon分别代表生成菜单项的文本和图标。
+* hideChildrenInMenu 用于隐藏不需要在菜单中展示的子路由。用法可以查看 分步表单 的配置。
+* hideInMenu 可以在菜单中不展示这个路由，包括子路由。效果可以查看 exception/trigger页面。
+* authority 用来配置这个路由的权限，如果配置了将会验证当前用户的权限，并决定是否展示。
+*
+*  默认提供李两种布局，UserLayout和basicLayout其中登陆后的内容页面均为后者，
+*  也可以自定义布局
+*
+*  由于 umi 的限制，在 router.config.js 是不能直接只是用组件的，Pro 中暂时支持 
+*  使用 ant.design 本身的 icon type，和传入一个 img 的 url。只需要直接在 icon 属性上配置即可，
+*  如果是个 url，Pro 会自动处理为一个 img 标签。
+* */
 export default [
   // user
   {
     path: '/user',
+
     component: '../layouts/UserLayout',
-    routes: [
-      { path: '/user', redirect: '/user/login' },
-      { path: '/user/login', name: 'login', component: './User/Login' },
-      { path: '/user/register', name: 'register', component: './User/Register' },
+    routes: [{
+        path: '/user',
+        redirect: '/user/login'
+      },
+      {
+        path: '/user/login',
+        name: 'login',
+        component: './User/Login'
+      },
+      {
+        path: '/user/register',
+        name: 'register',
+        component: './User/Register'
+      },
       {
         path: '/user/register-result',
         name: 'register.result',
@@ -24,13 +49,16 @@ export default [
     Routes: ['src/pages/Authorized'],
     routes: [
       // dashboard
-      { path: '/', redirect: '/dashboard/analysis', authority: ['admin', 'user'] },
+      {
+        path: '/',
+        redirect: '/dashboard/analysis',
+        authority: ['admin', 'user']
+      },
       {
         path: '/dashboard',
         name: 'dashboard',
         icon: 'dashboard',
-        routes: [
-          {
+        routes: [{
             path: '/dashboard/analysis',
             name: 'analysis',
             component: './Dashboard/Analysis',
@@ -52,8 +80,7 @@ export default [
         path: '/form',
         icon: 'form',
         name: 'form',
-        routes: [
-          {
+        routes: [{
             path: '/form/basic-form',
             name: 'basicform',
             component: './Forms/BasicForm',
@@ -63,8 +90,7 @@ export default [
             name: 'stepform',
             component: './Forms/StepForm',
             hideChildrenInMenu: true,
-            routes: [
-              {
+            routes: [{
                 path: '/form/step-form',
                 redirect: '/form/step-form/info',
               },
@@ -98,8 +124,7 @@ export default [
         path: '/list',
         icon: 'table',
         name: 'list',
-        routes: [
-          {
+        routes: [{
             path: '/list/table-list',
             name: 'searchtable',
             component: './List/TableList',
@@ -118,8 +143,7 @@ export default [
             path: '/list/search',
             name: 'searchlist',
             component: './List/List',
-            routes: [
-              {
+            routes: [{
                 path: '/list/search',
                 redirect: '/list/search/articles',
               },
@@ -178,7 +202,11 @@ export default [
             name: 'success',
             component: './Result/Success',
           },
-          { path: '/result/fail', name: 'fail', component: './Result/Error' },
+          {
+            path: '/result/fail',
+            name: 'fail',
+            component: './Result/Error'
+          },
         ],
       },
       {
@@ -214,13 +242,11 @@ export default [
         name: 'account',
         icon: 'user',
         path: '/account',
-        routes: [
-          {
+        routes: [{
             path: '/account/center',
             name: 'center',
             component: './Account/Center/Center',
-            routes: [
-              {
+            routes: [{
                 path: '/account/center',
                 redirect: '/account/center/articles',
               },
@@ -242,8 +268,7 @@ export default [
             path: '/account/settings',
             name: 'settings',
             component: './Account/Settings/Info',
-            routes: [
-              {
+            routes: [{
                 path: '/account/settings',
                 redirect: '/account/settings/base',
               },
@@ -272,8 +297,7 @@ export default [
         name: 'editor',
         icon: 'highlight',
         path: '/editor',
-        routes: [
-          {
+        routes: [{
             path: '/editor/flow',
             name: 'flow',
             component: './Editor/GGEditor/Flow',

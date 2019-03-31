@@ -7,6 +7,9 @@ import { menu } from '../defaultSettings';
 const { check } = Authorized;
 
 // Conversion router to menu.
+/** 
+ * 根据router.cnofig.js生成，项目中可以直接从后台获取
+*/
 function formatter(data, parentAuthority, parentName) {
   if (!data) {
     return undefined;
@@ -74,7 +77,7 @@ const filterMenuData = menuData => {
     .filter(item => item);
 };
 /**
- * 获取面包屑映射
+ * 获取面包屑映射,由PageHeaderWrapper实现
  * @param {Object} menuData 菜单配置
  */
 const getBreadcrumbNameMap = menuData => {

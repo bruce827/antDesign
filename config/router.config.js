@@ -1,17 +1,23 @@
 /** 
  * 路由
-* name 和 icon分别代表生成菜单项的文本和图标。
-* hideChildrenInMenu 用于隐藏不需要在菜单中展示的子路由。用法可以查看 分步表单 的配置。
-* hideInMenu 可以在菜单中不展示这个路由，包括子路由。效果可以查看 exception/trigger页面。
-* authority 用来配置这个路由的权限，如果配置了将会验证当前用户的权限，并决定是否展示。
-*
-*  默认提供李两种布局，UserLayout和basicLayout其中登陆后的内容页面均为后者，
-*  也可以自定义布局
-*
-*  由于 umi 的限制，在 router.config.js 是不能直接只是用组件的，Pro 中暂时支持 
-*  使用 ant.design 本身的 icon type，和传入一个 img 的 url。只需要直接在 icon 属性上配置即可，
-*  如果是个 url，Pro 会自动处理为一个 img 标签。
-* */
+ * name 和 icon分别代表生成菜单项的文本和图标。
+ * hideChildrenInMenu 用于隐藏不需要在菜单中展示的子路由。用法可以查看 分步表单 的配置。
+ * hideInMenu 可以在菜单中不展示这个路由，包括子路由。效果可以查看 exception/trigger页面。
+ * hideInBreadcrumb: 当前路由在面包屑中不展现，默认 false。
+ * authority 用来配置这个路由的权限，如果配置了将会验证当前用户的权限，并决定是否展示。
+ *
+ *  默认提供李两种布局，UserLayout和basicLayout其中登陆后的内容页面均为后者，
+ *  也可以自定义布局
+ *
+ *  由于 umi 的限制，在 router.config.js 是不能直接只是用组件的，Pro 中暂时支持 
+ *  使用 ant.design 本身的 icon type，和传入一个 img 的 url。只需要直接在 icon 属性上配置即可，
+ *  如果是个 url，Pro 会自动处理为一个 img 标签。
+ *
+ *
+ *   参数依赖umi，参见：https://umijs.org/zh/guide/router.html，umi默认将src/pages下的目录结构
+ *   解析为路由，使用自定义配置路由后，umi不会对src/pages下的目录做任何解析
+ *
+ * */
 export default [
   // user
   {
@@ -48,12 +54,13 @@ export default [
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
     routes: [
-      // dashboard
+      // 默认重定向到首页
       {
         path: '/',
         redirect: '/dashboard/analysis',
         authority: ['admin', 'user']
       },
+      // 首页
       {
         path: '/dashboard',
         name: 'dashboard',
@@ -163,6 +170,12 @@ export default [
                 component: './List/Applications',
               },
             ],
+          },
+          // 练习页面
+          {
+            path: '/list/greeCommit',
+            name: 'greeCommit',
+            component: './List/greeCommit',
           },
         ],
       },
@@ -316,7 +329,7 @@ export default [
       },
       {
         component: '404',
-      },
+      }
     ],
   },
 ];

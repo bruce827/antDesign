@@ -1,6 +1,19 @@
 @import '~antd/lib/style/themes/default.less';
 @import '~@/utils/utils.less';
 
+// CSS Modules 只会对 className 以及 id 进行转换，其他的比如属性选择器，标签选择器都不进行处理，
+// 推荐尽量使用 className。
+// 由于不用担心类名重复，你的 className 可以在基本语意化的前提下尽量简单一点儿。
+
+/*
+  CSS Modules 建议命名原则
+1、不使用选择器，只使用 class 名来定义样式
+2、不层叠多个 class，只使用一个 class 把所有样式定义好
+3、所有样式通过 composes 组合来实现复用
+4、不嵌套
+
+
+*/
 .cardList {
   margin-bottom: -24px;
 

@@ -1009,6 +1009,25 @@
 /* 
   Convert to from  src/undefined
  */
+
+.antd-pro-components-image-wrapper-index-imageWrapper {
+  padding: 0 20px 8px;
+  background: #f2f4f5;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.antd-pro-components-image-wrapper-index-img {
+  vertical-align: middle;
+  max-width: calc(100% - 32px);
+  margin: 2.4em 1em;
+  box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
+}
+
+/* 
+  Convert to from  src/undefined
+ */
 .antd-pro-components-login-index-login {
   .ant-tabs .ant-tabs-bar {
     margin-bottom: 24px;
@@ -3410,8 +3429,20 @@ a.antd-pro-pages-list-articles-listItemMetaTitle {
 
 /* 
   Convert to from  src/undefined
- */
+*/
+// CSS Modules 只会对 className 以及 id 进行转换，其他的比如属性选择器，标签选择器都不进行处理，
+// 推荐尽量使用 className。
+// 由于不用担心类名重复，你的 className 可以在基本语意化的前提下尽量简单一点儿。
 
+/*
+  CSS Modules 建议命名原则
+1、不使用选择器，只使用 class 名来定义样式
+2、不层叠多个 class，只使用一个 class 把所有样式定义好
+3、所有样式通过 composes 组合来实现复用
+4、不嵌套
+
+
+*/
 .antd-pro-pages-list-card-list-cardList {
   margin-bottom: -24px;
 

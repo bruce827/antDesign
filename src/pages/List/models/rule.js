@@ -12,6 +12,7 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
+      
       const response = yield call(queryRule, payload);
       yield put({
         type: 'save',

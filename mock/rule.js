@@ -1,8 +1,49 @@
 import { parse } from 'url';
-
+import mockjs from 'mockjs'
 // mock tableListDataSource
+// 使用随机生成数据
+const {Random} = mockjs;
+const constractStus = [
+  "待提交",
+  "待审核",
+  "审核通过",
+  "审核未通过",
+  "生效",
+  "冻结",
+  "关闭"
+];
+const cashStus = [
+  "已支付",
+  "未支付",
+  "-"
+];
+const concatType = [
+  "长期合同",
+  "年度合同",
+  "季度合同",
+  "月度合同",
+  "周合同",
+  "自定义合同",
+  "现货订单合同",
+];
+const constractSource = [
+  "线下签署",
+  "竞价活动",
+  "团购活动",
+  "定向挂牌",
+  "现货订单",
+];
+// 随意选取一个状态
+Random.extend({
+  pickOne:function(stuts){
+
+    return this.pick(stuts);
+  }
+});
+// 模拟数据量
+let listLen = 1000;
 let tableListDataSource = [];
-for (let i = 0; i < 46; i += 1) {
+for (let i = 0; i < listLen; i += 1) {
   tableListDataSource.push({
     key: i,
     disabled: i % 6 === 0,
@@ -20,17 +61,40 @@ for (let i = 0; i < 46; i += 1) {
     updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
     createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
     progress: Math.ceil(Math.random() * 100),
+
+    // 长合同数据模拟
+    // 合同编号
+    constactCode:Random.string(2)+'-'+Random.integer(0,1000)+'-'+Random.csentence(2),
+    // 合同名称
+    constractName:Random.ctitle(5,7),
+    // 商品名称
+    itemName:Random.ctitle(2,4)+';'+Random.ctitle(2,4),
+    // 客户名称
+    clientName:Random.cname(),
+    // 签订日期
+    dealDate:Random.date(),
+    // 合同状态
+    constractStus:Random.pickOne(constractStus),
+    // 履约保证金支付状态
+    cash1:Random.pickOne(cashStus),
+    // 优惠保证金支付状态
+    cash2:Random.pickOne(cashStus),
+    // 合同类型
+    contractType:Random.pickOne(concatType),
+    // 合同来源
+    constractSource:Random.pickOne(constractSource),
   });
 }
 
 function getRule(req, res, u) {
+  console.log('get');
   let url = u;
   if (!url || Object.prototype.toString.call(url) !== '[object String]') {
     url = req.url; // eslint-disable-line
   }
 
   const params = parse(url, true).query;
-
+  console.log(params);
   let dataSource = tableListDataSource;
 
   if (params.sorter) {
@@ -58,10 +122,41 @@ function getRule(req, res, u) {
     dataSource = dataSource.filter(data => data.name.indexOf(params.name) > -1);
   }
 
+  // 合同编号
+  if (params.constactCode) {
+    dataSource = dataSource.filter(data => data.constactCode.indexOf(params.constactCode) > -1);
+  }
+  // 合同名称
+  if (params.constractName) {
+    dataSource = dataSource.filter(data => data.constractName.indexOf(params.constractName) > -1);
+  }
+  // 合同类型
+  if (params.contractType) {
+    dataSource = dataSource.filter(data => data.contractType.indexOf(params.contractType) > -1);
+  }
+  // 合同来源
+  if (params.constractSource) {
+    dataSource = dataSource.filter(data => data.constractSource.indexOf(params.constractSource) > -1);
+  }
+  // 签订日期
+  if (params.dealDate) {
+    console.log(params.dealDate);
+    // let _start =  moment(params.dealDate.dealDate[0],'YYYY-MM-DD');
+    // let _end = moment(params.dealDate.dealDate[0],'YYYY-MM-DD');
+    dataSource = dataSource.filter(data => {
+      let _flag = false;
+
+      return _flag
+
+    });
+  }
+  // 分页
   let pageSize = 10;
   if (params.pageSize) {
     pageSize = params.pageSize * 1;
   }
+
+  
 
   const result = {
     list: dataSource,
@@ -76,6 +171,8 @@ function getRule(req, res, u) {
 }
 
 function postRule(req, res, u, b) {
+  console.log('post');
+  
   let url = u;
   if (!url || Object.prototype.toString.call(url) !== '[object String]') {
     url = req.url; // eslint-disable-line
@@ -125,6 +222,7 @@ function postRule(req, res, u, b) {
   return getRule(req, res, u);
 }
 
+// 列表页的查询请求使用get，添加删除等使用post
 export default {
   'GET /api/rule': getRule,
   'POST /api/rule': postRule,

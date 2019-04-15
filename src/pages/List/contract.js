@@ -38,7 +38,12 @@ const getValue = obj =>
     .join(',');
 const statusMap = ['default', 'processing', 'success', 'error'];
 const status = ['关闭', '运行中', '已上线', '异常'];
-
+// 支付状态
+const payStatusMap = {
+  '已支付':'success',
+  '未支付':'processing',
+  '-':''
+};
 const CreateForm = Form.create()(props => {
   const { modalVisible, form, handleAdd, handleModalVisible } = props;
   const okHandle = () => {
@@ -68,8 +73,8 @@ const CreateForm = Form.create()(props => {
 @Form.create()
 class UpdateForm extends PureComponent {
   static defaultProps = {
-    handleUpdate: () => {},
-    handleUpdateModalVisible: () => {},
+    handleUpdate: () => { },
+    handleUpdateModalVisible: () => { },
     values: {},
   };
 
@@ -272,15 +277,15 @@ class UpdateForm extends PureComponent {
     );
   }
 }
-
+// UpdateForm = Form.create({})(UpdateForm);
 /* eslint react/no-multi-comp:0 */
 @connect(({ rule, loading }) => ({
   rule,
   loading: loading.models.rule,
 }))
+
 @Form.create()
-class TableList extends PureComponent {
-  // 按钮状态
+class Contract extends PureComponent {
   state = {
     modalVisible: false,
     updateModalVisible: false,
@@ -289,28 +294,78 @@ class TableList extends PureComponent {
     formValues: {},
     stepFormValues: {},
   };
-  // 列
+  // 是否显示表格上方统计提示
+  showTableAlert = 'none';
+  // 表格是否显示复选框
+  showCheckbox = false;
+  // 表格列设置，默认按照签订日期排降序
   columns = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
+      title: '合同编号',
+      dataIndex: 'constactCode',
       render: text => <a onClick={() => this.previewItem(text)}>{text}</a>,
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '合同名称',
+      dataIndex: 'constractName',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '商品名称',
+      dataIndex: 'itemName',
       sorter: true,
-      render: val => `${val} 万`,
+      // render: val => `${val} 万`,
       // mark to display a total number
       needTotal: true,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
+      title: '客户名称',
+      dataIndex: 'clientName',
+    },
+    {
+      title: '签订日期',
+      dataIndex: 'dealDate',
+      sorter: true,
+      render: val => <span>{moment(val).format('YYYY-MM-DD')}</span>,
+    },
+    {
+      title: '合同状态',
+      dataIndex: 'constractStus',
+      // render(val) {
+      //   return <Badge status={statusMap[val]} text={status[val]} />;
+      // },
+    },
+    {
+      title: '履约保证金支付状态',
+      dataIndex: 'cash1',
+      // filters: [
+      //   {
+      //     text: status[0],
+      //     value: 0,
+      //   },
+      //   {
+      //     text: status[1],
+      //     value: 1,
+      //   },
+      //   {
+      //     text: status[2],
+      //     value: 2,
+      //   },
+      //   {
+      //     text: status[3],
+      //     value: 3,
+      //   },
+      // ],
+      render(val) {
+        let content = (val !== '-')?
+        (<Badge status={payStatusMap[val]} text={val} />)
+        :(val)
+
+        return content
+      },
+    },
+    {
+      title: '优惠保证金支付状态',
+      dataIndex: 'cash2',
       filters: [
         {
           text: status[0],
@@ -330,34 +385,105 @@ class TableList extends PureComponent {
         },
       ],
       render(val) {
-        return <Badge status={statusMap[val]} text={status[val]} />;
+        
+        let content = (val !== '-')?
+        (<Badge status={payStatusMap[val]} text={val} />)
+        :(val)
+
+        return content
       },
     },
     {
-      title: '上次调度时间',
-      dataIndex: 'updatedAt',
-      sorter: true,
-      render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      title: '合同类型',
+      dataIndex: 'contractType',
+      filters: [
+        {
+          text: status[0],
+          value: 0,
+        },
+        {
+          text: status[1],
+          value: 1,
+        },
+        {
+          text: status[2],
+          value: 2,
+        },
+        {
+          text: status[3],
+          value: 3,
+        },
+      ],
+      // render(val) {
+      //   return <Badge status={statusMap[val]} text={status[val]} />;
+      // },
+    },
+    {
+      title: '合同来源',
+      dataIndex: 'constractSource',
+      filters: [
+        {
+          text: status[0],
+          value: 0,
+        },
+        {
+          text: status[1],
+          value: 1,
+        },
+        {
+          text: status[2],
+          value: 2,
+        },
+        {
+          text: status[3],
+          value: 3,
+        },
+      ],
+      // render(val) {
+      //   return <Badge status={statusMap[val]} text={status[val]} />;
+      // },
     },
     {
       title: '操作',
+      // 常规操作为查看所以单独列出
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>配置</a>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>详情</a>
+          {/* 竖线分隔更好看 */}
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          {/* 更多按钮 */}
+          <Dropdown
+            overlay={
+              <Menu onClick={({ key }) => editAndDelete(key, props.current)}>
+                <Menu.Item key="edit">
+                  {/* 如果有变更记录需要显示提醒红点 */}
+                  <Badge dot>
+                    变更记录
+                  </Badge>
+                </Menu.Item>
+                <Menu.Item key="creatOrder">创建订单</Menu.Item>
+                <Menu.Item key="depositRecord">保证金信息记录</Menu.Item>
+                <Menu.Item key="postponePay">支付延期</Menu.Item>
+                <Menu.Item key="closeDetail">查看关闭申请</Menu.Item>
+              </Menu>
+            }
+          >
+            <a>
+              更多 <Icon type="down" />
+            </a>
+          </Dropdown>
         </Fragment>
       ),
     },
   ];
-// 加载前的loding按钮
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
       type: 'rule/fetch',
     });
   }
-// TODO:表格尺寸自适应
+
   handleStandardTableChange = (pagination, filtersArg, sorter) => {
     const { dispatch } = this.props;
     const { formValues } = this.state;
@@ -383,11 +509,11 @@ class TableList extends PureComponent {
       payload: params,
     });
   };
-// 跳转到详情页
+
   previewItem = id => {
     router.push(`/profile/basic/${id}`);
   };
-// 重置
+
   handleFormReset = () => {
     const { form, dispatch } = this.props;
     form.resetFields();
@@ -399,14 +525,14 @@ class TableList extends PureComponent {
       payload: {},
     });
   };
-// 搜索栏展开
+
   toggleForm = () => {
     const { expandForm } = this.state;
     this.setState({
       expandForm: !expandForm,
     });
   };
-// 选中数据时的按钮
+
   handleMenuClick = e => {
     const { dispatch } = this.props;
     const { selectedRows } = this.state;
@@ -430,50 +556,53 @@ class TableList extends PureComponent {
         break;
     }
   };
-// 选中操作
+
   handleSelectRows = rows => {
     this.setState({
       selectedRows: rows,
     });
   };
-// 搜索按钮
+  // 查询
   handleSearch = e => {
+    // 阻止默认动作
     e.preventDefault();
 
     const { dispatch, form } = this.props;
 
     form.validateFields((err, fieldsValue) => {
       if (err) return;
-
+      const rangeValue = fieldsValue['dealDate'];
       const values = {
         ...fieldsValue,
+        // 对日期类型进行预处理
+        'dealDate':[rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')],
         updatedAt: fieldsValue.updatedAt && fieldsValue.updatedAt.valueOf(),
       };
-
+      // 按钮状态
       this.setState({
         formValues: values,
       });
-
+      
       dispatch({
         type: 'rule/fetch',
         payload: values,
       });
     });
   };
-// 新建模态窗显隐
+
   handleModalVisible = flag => {
     this.setState({
       modalVisible: !!flag,
     });
   };
-// 编辑模态窗
+
   handleUpdateModalVisible = (flag, record) => {
     this.setState({
       updateModalVisible: !!flag,
       stepFormValues: record || {},
     });
   };
-// TODO: 添加按钮
+
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
@@ -486,7 +615,7 @@ class TableList extends PureComponent {
     message.success('添加成功');
     this.handleModalVisible();
   };
-// TODO: 更新按钮
+
   handleUpdate = fields => {
     const { dispatch } = this.props;
     const { formValues } = this.state;
@@ -505,7 +634,7 @@ class TableList extends PureComponent {
     message.success('配置成功');
     this.handleUpdateModalVisible();
   };
-// 切换简单表单
+
   renderSimpleForm() {
     const {
       form: { getFieldDecorator },
@@ -514,17 +643,14 @@ class TableList extends PureComponent {
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="规则名称">
+            <FormItem label="合同编号">
               {getFieldDecorator('name')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
-                <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
-                </Select>
+            <FormItem label="签订日期">
+              {getFieldDecorator('date')(
+                <DatePicker.RangePicker style={{ width: '100%' }} />
               )}
             </FormItem>
           </Col>
@@ -545,7 +671,7 @@ class TableList extends PureComponent {
       </Form>
     );
   }
-// 切换自定义表单
+
   renderAdvancedForm() {
     const {
       form: { getFieldDecorator },
@@ -554,51 +680,76 @@ class TableList extends PureComponent {
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="规则名称">
-              {getFieldDecorator('name')(<Input placeholder="请输入" />)}
+            <FormItem label="合同编号">
+              {getFieldDecorator('constactCode')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
-                <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
-                </Select>
-              )}
+            <FormItem label="合同名称">
+              {getFieldDecorator('constractName')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="调用次数">
-              {getFieldDecorator('number')(<InputNumber style={{ width: '100%' }} />)}
+            <FormItem label="客户名称">
+              {getFieldDecorator('clientName')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="更新日期">
-              {getFieldDecorator('date')(
-                <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />
-              )}
-            </FormItem>
-          </Col>
-          <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-            {/* TODO:ant表单取值方法 */}
-              {getFieldDecorator('status3')(
+            <FormItem label="合同类型">
+              {getFieldDecorator('contractType')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="长期合同">长期合同</Option>
+                  <Option value="年度合同">年度合同</Option>
+                  <Option value="季度合同">季度合同</Option>
+                  <Option value="月度合同">月度合同</Option>
+                  <Option value="周合同">周合同</Option>
+                  <Option value="自定义合同">自定义合同</Option>
+                  <Option value="现货订单合同">现货订单合同</Option>
                 </Select>
               )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status4')(
+            <FormItem label="合同来源">
+              {getFieldDecorator('constractSource')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="线下签署">线下签署</Option>
+                  <Option value="竞价活动">竞价活动</Option>
+                  <Option value="团购活动">团购活动</Option>
+                  <Option value="定向挂牌">定向挂牌</Option>
+                  <Option value="现货订单">现货订单</Option>
+                </Select>
+              )}
+            </FormItem>
+          </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="签订日期">
+              {getFieldDecorator('dealDate')(
+                <DatePicker.RangePicker 
+                  style={{ width: '100%' }} 
+                  
+                  />
+              )}
+            </FormItem>
+          </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="商品名称">
+              {getFieldDecorator('itemName')(<Input placeholder="请输入" />)}
+            </FormItem>
+          </Col>
+          <Col md={8} sm={24}>
+            <FormItem label="合同状态">
+              {getFieldDecorator('constractStus')(
+                <Select placeholder="请选择" style={{ width: '100%' }}>
+                  <Option value="待提交">待提交</Option>
+                  <Option value="待审核">待审核</Option>
+                  <Option value="审核通过">审核通过</Option>
+                  <Option value="审核未通过">审核未通过</Option>
+                  <Option value="生效">生效</Option>
+                  <Option value="冻结">冻结</Option>
+                  <Option value="关闭">关闭</Option>
                 </Select>
               )}
             </FormItem>
@@ -620,22 +771,24 @@ class TableList extends PureComponent {
       </Form>
     );
   }
-// 切换表单入口，如果展开则显示自定义表单
+
   renderForm() {
     const { expandForm } = this.state;
     return expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
   }
+
   render() {
     const {
       rule: { data },
       loading,
     } = this.props;
+
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
-    // 更多操作下的按钮
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
-        <Menu.Item key="remove">删除</Menu.Item>
-        <Menu.Item key="approval">批量审批</Menu.Item>
+        <Menu.Item key="remove">变更记录</Menu.Item>
+        <Menu.Item key="approval">保证金记录</Menu.Item>
+        <Menu.Item key="postponed">支付延期</Menu.Item>
       </Menu>
     );
 
@@ -647,18 +800,23 @@ class TableList extends PureComponent {
       handleUpdateModalVisible: this.handleUpdateModalVisible,
       handleUpdate: this.handleUpdate,
     };
+
+
     return (
-      <PageHeaderWrapper title="查询表格">
+      <PageHeaderWrapper >
         <Card bordered={false}>
           <div className={styles.tableList}>
+            {/* 查询表单 */}
             <div className={styles.tableListForm}>{this.renderForm()}</div>
+            {/* 表格操作，在选中时会有其他操作 */}
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
+                创建长合同
               </Button>
+              {/* 如果选择了数据则显示 */}
               {selectedRows.length > 0 && (
                 <span>
-                  <Button>批量操作</Button>
+                  <Button>批量导入合同</Button>
                   <Dropdown overlay={menu}>
                     <Button>
                       更多操作 <Icon type="down" />
@@ -667,6 +825,7 @@ class TableList extends PureComponent {
                 </span>
               )}
             </div>
+            {/* 表格 */}
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
@@ -674,10 +833,14 @@ class TableList extends PureComponent {
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
+              showTableAlert={this.showTableAlert}
+              showCheckbox = {this.showCheckbox}
             />
           </div>
         </Card>
+        {/* 创建表单 */}
         <CreateForm {...parentMethods} modalVisible={modalVisible} />
+        {/* 编辑表单 */}
         {stepFormValues && Object.keys(stepFormValues).length ? (
           <UpdateForm
             {...updateMethods}
@@ -687,9 +850,7 @@ class TableList extends PureComponent {
         ) : null}
       </PageHeaderWrapper>
     );
-
-
   }
 }
-
-export default TableList;
+// Contract = Form.create({})(Contract);
+export default Contract;

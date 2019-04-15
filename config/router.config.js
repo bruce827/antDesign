@@ -146,6 +146,7 @@ export default [
             name: 'cardlist',
             component: './List/CardList',
           },
+
           {
             path: '/list/search',
             name: 'searchlist',
@@ -171,11 +172,11 @@ export default [
               },
             ],
           },
-          // 练习页面
+          // 合同列表
           {
-            path: '/list/greeCommit',
-            name: 'greeCommit',
-            component: './List/greeCommit',
+            path: '/list/contract',
+            name: 'contract',
+            component: './List/contract',
           },
         ],
       },

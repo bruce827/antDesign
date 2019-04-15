@@ -2,7 +2,7 @@ import React from 'react';
 import { Router as DefaultRouter, Route, Switch } from 'react-router-dom';
 import dynamic from 'umi/dynamic';
 import renderRoutes from 'umi/_renderRoutes';
-import RendererWrapper0 from 'E:/github/antDesign/src/pages/.umi/LocaleWrapper.jsx'
+import RendererWrapper0 from '/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/.umi/LocaleWrapper.jsx'
 import _dvaDynamic from 'dva/dynamic'
 
 let Router = require('dva/router').routerRedux.ConnectedRouter;
@@ -13,7 +13,7 @@ let routes = [
     "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "layouts__UserLayout" */'../../layouts/UserLayout'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
     "routes": [
       {
@@ -27,10 +27,10 @@ let routes = [
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__User__models__register.js' */'E:/github/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
+  import(/* webpackChunkName: 'p__User__models__register.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__User__Login" */'../User/Login'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
@@ -40,10 +40,10 @@ models: () => [
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__User__models__register.js' */'E:/github/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
+  import(/* webpackChunkName: 'p__User__models__register.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__User__Register" */'../User/Register'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
@@ -53,10 +53,10 @@ models: () => [
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__User__models__register.js' */'E:/github/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
+  import(/* webpackChunkName: 'p__User__models__register.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/User/models/register.js').then(m => { return { namespace: 'register',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__User__RegisterResult" */'../User/RegisterResult'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
@@ -64,12 +64,12 @@ models: () => [
         "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__404" */'../404'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
       {
-        "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+        "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
       }
     ]
   },
@@ -78,7 +78,7 @@ models: () => [
     "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "layouts__BasicLayout" */'../../layouts/BasicLayout'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
     "Routes": [require('../Authorized').default],
     "routes": [
@@ -102,12 +102,12 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'E:/github/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'E:/github/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'E:/github/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Dashboard__Analysis" */'../Dashboard/Analysis'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -117,12 +117,12 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'E:/github/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'E:/github/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'E:/github/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Dashboard__Monitor" */'../Dashboard/Monitor'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -132,17 +132,17 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'E:/github/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'E:/github/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'E:/github/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Dashboard__models__activities.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__chart.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Dashboard__models__monitor.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Dashboard/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Dashboard__Workplace" */'../Dashboard/Workplace'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -157,10 +157,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__BasicForm" */'../Forms/BasicForm'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -170,10 +170,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__StepForm" */'../Forms/StepForm'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "hideChildrenInMenu": true,
             "routes": [
@@ -188,10 +188,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__StepForm" */'../Forms/StepForm/Step1'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -201,10 +201,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__StepForm" */'../Forms/StepForm/Step2'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -214,15 +214,15 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__StepForm" */'../Forms/StepForm/Step3'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
               {
-                "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+                "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
               }
             ]
           },
@@ -235,15 +235,15 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Forms__models__form.js' */'E:/github/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Forms__AdvancedForm" */'../Forms/AdvancedForm'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -258,10 +258,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__TableList" */'../List/TableList'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -271,10 +271,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__BasicList" */'../List/BasicList'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -284,10 +284,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__CardList" */'../List/CardList'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -297,10 +297,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__List" */'../List/List'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "routes": [
               {
@@ -314,10 +314,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__List" */'../List/Articles'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -327,10 +327,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__List" */'../List/Projects'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -340,33 +340,33 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__List__List" */'../List/Applications'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
               {
-                "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+                "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
               }
             ]
           },
           {
-            "path": "/list/greeCommit",
-            "name": "greeCommit",
+            "path": "/list/contract",
+            "name": "contract",
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__List__models__rule.js' */'E:/github/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
+  import(/* webpackChunkName: 'p__List__models__rule.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/List/models/rule.js').then(m => { return { namespace: 'rule',...m.default}})
 ],
-  component: () => import(/* webpackChunkName: "p__List__greeCommit" */'../List/greeCommit'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  component: () => import(/* webpackChunkName: "p__List__contract" */'../List/contract'),
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -381,10 +381,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'E:/github/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
+  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Profile__BasicProfile" */'../Profile/BasicProfile'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -395,10 +395,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'E:/github/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
+  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Profile__BasicProfile" */'../Profile/BasicProfile'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -411,15 +411,15 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'E:/github/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
+  import(/* webpackChunkName: 'p__Profile__models__profile.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Profile/models/profile.js').then(m => { return { namespace: 'profile',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Profile__AdvancedProfile" */'../Profile/AdvancedProfile'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -434,7 +434,7 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Result__Success" */'../Result/Success'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -444,12 +444,12 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Result__Error" */'../Result/Error'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -464,10 +464,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Exception__models__error.js' */'E:/github/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
+  import(/* webpackChunkName: 'p__Exception__models__error.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Exception__403" */'../Exception/403'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -477,10 +477,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Exception__models__error.js' */'E:/github/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
+  import(/* webpackChunkName: 'p__Exception__models__error.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Exception__404" */'../Exception/404'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -490,10 +490,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Exception__models__error.js' */'E:/github/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
+  import(/* webpackChunkName: 'p__Exception__models__error.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Exception__500" */'../Exception/500'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -504,15 +504,15 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Exception__models__error.js' */'E:/github/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
+  import(/* webpackChunkName: 'p__Exception__models__error.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Exception/models/error.js').then(m => { return { namespace: 'error',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Exception__TriggerException" */'../Exception/TriggerException'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -527,7 +527,7 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Account__Center__Center" */'../Account/Center/Center'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "routes": [
               {
@@ -540,7 +540,7 @@ models: () => [
                 "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Account__Center__Center" */'../Account/Center/Articles'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -549,7 +549,7 @@ models: () => [
                 "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Account__Center__Center" */'../Account/Center/Applications'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -558,12 +558,12 @@ models: () => [
                 "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Account__Center__Center" */'../Account/Center/Projects'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
               {
-                "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+                "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
               }
             ]
           },
@@ -573,10 +573,10 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'E:/github/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Account__Settings__Info" */'../Account/Settings/Info'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "routes": [
               {
@@ -589,10 +589,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'E:/github/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Account__Settings__Info" */'../Account/Settings/BaseView'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -601,10 +601,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'E:/github/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Account__Settings__Info" */'../Account/Settings/SecurityView'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -613,10 +613,10 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'E:/github/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Account__Settings__Info" */'../Account/Settings/BindingView'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
@@ -625,20 +625,20 @@ models: () => [
                 "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'E:/github/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Account__Settings__models__geographic.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Account/Settings/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Account__Settings__Info" */'../Account/Settings/NotificationView'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
                 "exact": true
               },
               {
-                "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+                "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
               }
             ]
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -653,7 +653,7 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Editor__GGEditor__Flow" */'../Editor/GGEditor/Flow'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -663,7 +663,7 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Editor__GGEditor__Mind" */'../Editor/GGEditor/Mind'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
@@ -673,12 +673,12 @@ models: () => [
             "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__Editor__GGEditor__Koni" */'../Editor/GGEditor/Koni'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
             "exact": true
           },
           {
-            "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+            "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
       },
@@ -686,17 +686,17 @@ models: () => [
         "component": _dvaDynamic({
   
   component: () => import(/* webpackChunkName: "p__404" */'../404'),
-  LoadingComponent: require('E:/github/antDesign/src/components/PageLoading/index').default,
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
       {
-        "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+        "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
       }
     ]
   },
   {
-    "component": () => React.createElement(require('E:/github/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+    "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
   }
 ];
 window.g_routes = routes;

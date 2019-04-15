@@ -10,6 +10,7 @@ export async function queryActivities() {
 }
 
 export async function queryRule(params) {
+  console.log(params);
   return request(`/api/rule?${stringify(params)}`);
 }
 

@@ -1,5 +1,7 @@
 import { parse } from 'url';
 import mockjs from 'mockjs'
+// 处理时间排序
+import moment from 'moment'
 // mock tableListDataSource
 // 使用随机生成数据
 const {Random} = mockjs;
@@ -41,7 +43,7 @@ Random.extend({
   }
 });
 // 模拟数据量
-let listLen = 1000;
+let listLen = 500;
 let tableListDataSource = [];
 for (let i = 0; i < listLen; i += 1) {
   tableListDataSource.push({
@@ -87,16 +89,14 @@ for (let i = 0; i < listLen; i += 1) {
 }
 
 function getRule(req, res, u) {
-  console.log('get');
   let url = u;
   if (!url || Object.prototype.toString.call(url) !== '[object String]') {
     url = req.url; // eslint-disable-line
   }
 
   const params = parse(url, true).query;
-  console.log(params);
   let dataSource = tableListDataSource;
-
+    
   if (params.sorter) {
     const s = params.sorter.split('_');
     dataSource = dataSource.sort((prev, next) => {
@@ -138,18 +138,31 @@ function getRule(req, res, u) {
   if (params.constractSource) {
     dataSource = dataSource.filter(data => data.constractSource.indexOf(params.constractSource) > -1);
   }
-  // 签订日期
-  if (params.dealDate) {
-    console.log(params.dealDate);
-    // let _start =  moment(params.dealDate.dealDate[0],'YYYY-MM-DD');
-    // let _end = moment(params.dealDate.dealDate[0],'YYYY-MM-DD');
+  // 签订日期,允许默认查询
+  if (params['dealDate[0]'] || params['dealDate[1]'] ) {
+    let _start =  moment(params['dealDate[0]'],'YYYY-MM-DD');
+    let _end = moment(params['dealDate[1]'],'YYYY-MM-DD');
     dataSource = dataSource.filter(data => {
-      let _flag = false;
+      let _data = moment(data.dealDate,'YYYY-MM-DD');
+      if(_data.isBetween(_start,_end)){
 
-      return _flag
-
+        return true 
+      }
+      return false
     });
   }
+  // 商品名称
+  if(params.itemName){
+    dataSource = dataSource.filter(data => data.itemName.indexOf(params.itemName) > -1);
+  }
+  // 合同状态
+  if(params.constractStus){
+    dataSource = dataSource.filter(
+      data => constractStus.includes(data.constractStus)
+    );
+  }
+
+  
   // 分页
   let pageSize = 10;
   if (params.pageSize) {

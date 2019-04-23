@@ -366,24 +366,24 @@ class Contract extends PureComponent {
     {
       title: '优惠保证金支付状态',
       dataIndex: 'cash2',
-      filters: [
-        {
-          text: status[0],
-          value: 0,
-        },
-        {
-          text: status[1],
-          value: 1,
-        },
-        {
-          text: status[2],
-          value: 2,
-        },
-        {
-          text: status[3],
-          value: 3,
-        },
-      ],
+      // filters: [
+      //   {
+      //     text: status[0],
+      //     value: 0,
+      //   },
+      //   {
+      //     text: status[1],
+      //     value: 1,
+      //   },
+      //   {
+      //     text: status[2],
+      //     value: 2,
+      //   },
+      //   {
+      //     text: status[3],
+      //     value: 3,
+      //   },
+      // ],
       render(val) {
         
         let content = (val !== '-')?
@@ -396,24 +396,24 @@ class Contract extends PureComponent {
     {
       title: '合同类型',
       dataIndex: 'contractType',
-      filters: [
-        {
-          text: status[0],
-          value: 0,
-        },
-        {
-          text: status[1],
-          value: 1,
-        },
-        {
-          text: status[2],
-          value: 2,
-        },
-        {
-          text: status[3],
-          value: 3,
-        },
-      ],
+      // filters: [
+      //   {
+      //     text: status[0],
+      //     value: 0,
+      //   },
+      //   {
+      //     text: status[1],
+      //     value: 1,
+      //   },
+      //   {
+      //     text: status[2],
+      //     value: 2,
+      //   },
+      //   {
+      //     text: status[3],
+      //     value: 3,
+      //   },
+      // ],
       // render(val) {
       //   return <Badge status={statusMap[val]} text={status[val]} />;
       // },
@@ -421,24 +421,24 @@ class Contract extends PureComponent {
     {
       title: '合同来源',
       dataIndex: 'constractSource',
-      filters: [
-        {
-          text: status[0],
-          value: 0,
-        },
-        {
-          text: status[1],
-          value: 1,
-        },
-        {
-          text: status[2],
-          value: 2,
-        },
-        {
-          text: status[3],
-          value: 3,
-        },
-      ],
+      // filters: [
+      //   {
+      //     text: status[0],
+      //     value: 0,
+      //   },
+      //   {
+      //     text: status[1],
+      //     value: 1,
+      //   },
+      //   {
+      //     text: status[2],
+      //     value: 2,
+      //   },
+      //   {
+      //     text: status[3],
+      //     value: 3,
+      //   },
+      // ],
       // render(val) {
       //   return <Badge status={statusMap[val]} text={status[val]} />;
       // },
@@ -511,6 +511,7 @@ class Contract extends PureComponent {
   };
 
   previewItem = id => {
+    
     router.push(`/profile/basic/${id}`);
   };
 
@@ -571,13 +572,18 @@ class Contract extends PureComponent {
 
     form.validateFields((err, fieldsValue) => {
       if (err) return;
-      const rangeValue = fieldsValue['dealDate'];
+      // 对日期类型进行预处理
+      if(fieldsValue['dealDate']){
+        const rangeValue = fieldsValue['dealDate'];
+        fieldsValue.dealDate = [rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')] 
+      }
+      
       const values = {
         ...fieldsValue,
-        // 对日期类型进行预处理
-        'dealDate':[rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')],
         updatedAt: fieldsValue.updatedAt && fieldsValue.updatedAt.valueOf(),
       };
+
+
       // 按钮状态
       this.setState({
         formValues: values,
@@ -644,12 +650,12 @@ class Contract extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
             <FormItem label="合同编号">
-              {getFieldDecorator('name')(<Input placeholder="请输入" />)}
+              {getFieldDecorator('constactCode')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
             <FormItem label="签订日期">
-              {getFieldDecorator('date')(
+              {getFieldDecorator('dealDate')(
                 <DatePicker.RangePicker style={{ width: '100%' }} />
               )}
             </FormItem>
@@ -776,7 +782,12 @@ class Contract extends PureComponent {
     const { expandForm } = this.state;
     return expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
   }
-
+  // 跳转至添加页
+  toAddForm = ()=>{
+    console.log(router);
+    
+    router.push('/form/addContract-form')
+  }
   render() {
     const {
       rule: { data },
@@ -801,6 +812,7 @@ class Contract extends PureComponent {
       handleUpdate: this.handleUpdate,
     };
 
+    
 
     return (
       <PageHeaderWrapper >
@@ -810,8 +822,13 @@ class Contract extends PureComponent {
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             {/* 表格操作，在选中时会有其他操作 */}
             <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                创建长合同
+              <Button 
+                icon="plus" 
+                type="primary"
+                // onClick={() => this.handleModalVisible(true)}
+                onClick={()=>{this.toAddForm()}}
+                >
+                  创建长合同
               </Button>
               {/* 如果选择了数据则显示 */}
               {selectedRows.length > 0 && (

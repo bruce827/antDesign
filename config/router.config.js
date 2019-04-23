@@ -124,6 +124,12 @@ export default [
             authority: ['admin'],
             component: './Forms/AdvancedForm',
           },
+          {
+            path: '/form/addContract-form',
+            name: 'addContractform',
+            authority: ['admin'],
+            component: './Forms/AddContractform',
+          },
         ],
       },
       // list

@@ -243,6 +243,22 @@ models: () => [
             "exact": true
           },
           {
+            "path": "/form/addContract-form",
+            "name": "addContractform",
+            "authority": [
+              "admin"
+            ],
+            "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Forms__models__form.js' */'/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/pages/Forms/models/form.js').then(m => { return { namespace: 'form',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Forms__AddContractform" */'../Forms/AddContractform'),
+  LoadingComponent: require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
             "component": () => React.createElement(require('/Users/maylis/Desktop/github上的项目/reactDemo/antDesign/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
